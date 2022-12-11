@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import "./App.css"
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -23,10 +24,25 @@ import Search from '@mui/icons-material/Search';
 import BasicCard from './components/Card';
 import Paper from '@mui/material/Paper';
 import ProductCard from './components/ProductCard';
+import { getProduct } from "../src/api/getProduct"
+import { Product } from './Interfaceses/Product';
 
 
 
-export default function PrimarySearchAppBar() {
+const App = () => {
+
+  const [productData, setProductData] = useState<Product[] | undefined>()
+  const fecthProduct = async () => {
+    let res = await getProduct()
+    if (res) {
+      setProductData(res?.data)
+    }
+  }
+  useEffect(() => {
+    fecthProduct()
+
+  }, [])
+
   return (
     <>
 
@@ -72,7 +88,7 @@ export default function PrimarySearchAppBar() {
       </Box>
       <Container maxWidth="lg" sx={{ marginTop: 4 }}>
         <Grid container spacing={4}>
-          <Grid container spacing={4} item xs={2}>
+          <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
             <Grid item xs={12}>
               <BasicCard children={<Typography>Deneme</Typography>} />
             </Grid>
@@ -84,14 +100,23 @@ export default function PrimarySearchAppBar() {
             </Grid>
           </Grid>
           <Grid item xs={8} container spacing={2}>
-            {[0, 1, 2, 3].map((value) => (
-              <Grid key={value} item xs={3}>
-                <ProductCard />
-              </Grid>
-            ))}
+            {productData?.map((value: any, i: any) => {
+              return (
+                <Grid key={i} item xs={3}>
+                  <ProductCard data={value} />
+                </Grid>
+              )
+            }
+            )
+            }
           </Grid>
-          <Grid item xs={2}>
-            <BasicCard children={<Typography>Deneme</Typography>} />
+          <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
+            <Grid item xs={12}>
+              <BasicCard children={<Typography>Deneme</Typography>} />
+            </Grid>
+            <Grid item xs={12}>
+              <BasicCard children={<Typography>Deneme</Typography>} />
+            </Grid>
 
           </Grid>
         </Grid>
@@ -104,3 +129,4 @@ export default function PrimarySearchAppBar() {
 
   );
 }
+export default App;
