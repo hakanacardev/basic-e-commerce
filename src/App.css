@@ -2,6 +2,32 @@
   text-align: center;
 }
 
+.inputStyle {
+  background-color: white;
+  border-color: white;
+  outline: none;
+  padding: .45rem .75rem .45rem 2rem;
+  border-radius: .5rem;
+  border: none;
+
+}
+
+.inputStyle:focus {
+  outline: none;
+}
+
+.inputLabel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputLabel svg {
+  position: absolute;
+  left: .25rem;
+  fill: lightgray;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +58,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
