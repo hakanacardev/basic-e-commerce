@@ -26,6 +26,7 @@ import Paper from '@mui/material/Paper';
 import ProductCard from './components/ProductCard';
 import { getProduct } from "../src/api/getProduct"
 import { Product } from './Interfaceses/Product';
+import { GlobalProvider } from './context/GlobalContext';
 
 
 
@@ -44,86 +45,92 @@ const App = () => {
   }, [])
 
   return (
+
     <>
+      <GlobalProvider  >
 
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar position="static">
 
-          <Container maxWidth="lg">
-            <Toolbar>
+            <Container maxWidth="lg">
+              <Toolbar>
 
-              <Typography
-                variant="h6"
-                noWrap
-                component="div"
-                sx={{ display: { xs: 'none', sm: 'block' } }}
-              >
-                MUI
-              </Typography>
-              <Box sx={{ marginLeft: 5 }}>
-                <Input
-                  icon={<Search />}
-                />
-              </Box>
-
-              <Box sx={{ flexGrow: 1 }} />
-              <Box>
-                <Button
-                  color='inherit'
-                  startIcon={<WorkOutlineIcon />}
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="div"
+                  sx={{ display: { xs: 'none', sm: 'block' } }}
                 >
-                  deneme
-                </Button>
-                <Button
-                  color='inherit'
-                  startIcon={<AccountCircle />}
-                >
-                  deneme2
-                </Button>
-              </Box>
-            </Toolbar>
+                  MUI
+                </Typography>
+                <Box sx={{ marginLeft: 5 }}>
+                  <Input
+                    icon={<Search />}
+                  />
+                </Box>
 
-          </Container>
-        </AppBar>
-      </Box>
-      <Container maxWidth="lg" sx={{ marginTop: 4 }}>
-        <Grid container spacing={4}>
-          <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
-            <Grid item xs={12}>
-              <BasicCard children={<Typography>Deneme</Typography>} />
+                <Box sx={{ flexGrow: 1 }} />
+                <Box>
+                  <Button
+                    color='inherit'
+                    startIcon={<WorkOutlineIcon />}
+                  >
+                    deneme
+                  </Button>
+                  <Button
+                    color='inherit'
+                    startIcon={<AccountCircle />}
+                  >
+                    deneme2
+                  </Button>
+                </Box>
+              </Toolbar>
+
+            </Container>
+          </AppBar>
+        </Box>
+        <Container maxWidth="lg" sx={{ marginTop: 4 }}>
+          <Grid container spacing={4}>
+            <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
+              <Grid item xs={12}>
+                <BasicCard children={<Typography>Deneme</Typography>} />
+              </Grid>
+              <Grid item xs={12}>
+                <BasicCard children={<Typography>Deneme</Typography>} />
+              </Grid>
+              <Grid item xs={12}>
+                <BasicCard children={<Typography>Deneme</Typography>} />
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <BasicCard children={<Typography>Deneme</Typography>} />
-            </Grid>
-            <Grid item xs={12}>
-              <BasicCard children={<Typography>Deneme</Typography>} />
-            </Grid>
-          </Grid>
-          <Grid item xs={8} container spacing={2}>
-            {productData?.map((value: any, i: any) => {
-              return (
-                <Grid key={i} item xs={3}>
-                  <ProductCard data={value} />
-                </Grid>
+            <Grid item xs={8} container spacing={2}>
+              {productData?.map((value: any, i: any) => {
+                return (
+                  <Grid key={i} item xs={3}>
+                    <ProductCard
+                      data={value} />
+                  </Grid>
+                )
+              }
               )
-            }
-            )
-            }
-          </Grid>
-          <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
-            <Grid item xs={12}>
-              <BasicCard children={<Typography>Deneme</Typography>} />
+              }
             </Grid>
-            <Grid item xs={12}>
-              <BasicCard children={<Typography>Deneme</Typography>} />
+            <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
+              <Grid item xs={12}>
+                <BasicCard children={<Typography>Deneme</Typography>} />
+              </Grid>
+              <Grid item xs={12}>
+                <BasicCard children={<Typography>Deneme</Typography>} />
+              </Grid>
+
             </Grid>
-
           </Grid>
-        </Grid>
 
-      </Container>
+        </Container>
+      </GlobalProvider>
 
     </>
+
+
 
 
 
