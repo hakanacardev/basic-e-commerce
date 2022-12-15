@@ -20,11 +20,11 @@ export const GlobalProvider = (props: Iprops) => {
         setCart(getCart())
     }
     const deleteCartItem = async (product: Product) => {
-        const filter = await cart.filter((v: any) => v.id !== product.id)
-        await window.localStorage.setItem("cart", JSON.stringify(filter))
+        const index = await cart.findIndex((v: any) => v.id === product.id)
+        cart.splice(index, 1)
+        await window.localStorage.setItem("cart", JSON.stringify(cart))
         setCart(getCart())
     }
-    console.log("cart", cart)
     const data = { product, setProduct, getCart, addCartItem, deleteCartItem, cart }
 
     return (

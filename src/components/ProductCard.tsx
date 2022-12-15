@@ -14,8 +14,7 @@ interface Iprops {
 
 export default function ProductCard(props: Iprops) {
     //console.log('props.data11111', props.data)
-    const { deleteCartItem, cart } = useCustomContext() as any
-    console.log('cart1', cart)
+    const { addCartItem } = useCustomContext() as any
     return (
         <Card sx={{ maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}>
             <CardMedia
@@ -33,7 +32,7 @@ export default function ProductCard(props: Iprops) {
                 </Typography>
             </CardContent>
             <CardActions sx={{ marginTop: 'auto' }}>
-                <Button onClick={() => deleteCartItem(props.data)} sx={{ width: '100%' }} variant='contained' color="primary" disableElevation>
+                <Button onClick={() => addCartItem(props.data)} sx={{ width: '100%' }} variant='contained' color="primary" disableElevation>
                     Sepete Ekle
                 </Button>
             </CardActions>

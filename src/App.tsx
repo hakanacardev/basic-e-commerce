@@ -26,7 +26,9 @@ import Paper from '@mui/material/Paper';
 import ProductCard from './components/ProductCard';
 import { getProduct } from "../src/api/getProduct"
 import { Product } from './Interfaceses/Product';
-import { GlobalProvider } from './context/GlobalContext';
+import { GlobalProvider, useCustomContext } from './context/GlobalContext';
+import CartItem from './components/CartItem';
+import Cart from './components/Cart';
 
 
 
@@ -116,13 +118,15 @@ const App = () => {
             </Grid>
             <Grid sx={{ height: 'max-content' }} container spacing={4} item xs={2}>
               <Grid item xs={12}>
-                <BasicCard children={<Typography>Deneme</Typography>} />
+                <Cart />
               </Grid>
               <Grid item xs={12}>
                 <BasicCard children={<Typography>Deneme</Typography>} />
               </Grid>
 
             </Grid>
+
+
           </Grid>
 
         </Container>
