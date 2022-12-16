@@ -25,7 +25,9 @@ export const GlobalProvider = (props: Iprops) => {
         await window.localStorage.setItem("cart", JSON.stringify(cart))
         setCart(getCart())
     }
-    const data = { product, setProduct, getCart, addCartItem, deleteCartItem, cart }
+    const [totalPrice, setTotalPrice] = useState()
+    console.log('totalPrice', totalPrice)
+    const data = { product, setProduct, getCart, addCartItem, deleteCartItem, cart, totalPrice, setTotalPrice }
 
     return (
         <GlobalContext.Provider value={data as any} >
