@@ -27,7 +27,9 @@ export const GlobalProvider = (props: Iprops) => {
     }
     const [totalPrice, setTotalPrice] = useState()
     console.log('totalPrice', totalPrice)
-    const data = { product, setProduct, getCart, addCartItem, deleteCartItem, cart, totalPrice, setTotalPrice }
+    const [search, setSearch] = useState("")
+
+    const data = { product, setProduct, getCart, addCartItem, deleteCartItem, cart, totalPrice, setTotalPrice, search, setSearch }
 
     return (
         <GlobalContext.Provider value={data as any} >
