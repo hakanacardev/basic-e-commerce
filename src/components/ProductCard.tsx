@@ -7,6 +7,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { Interface } from 'readline';
 import { Product } from '../Interfaceses/Product';
 import { useCustomContext } from '../context/GlobalContext';
+import { Link } from 'react-router-dom';
 
 interface Iprops {
     data: Product | undefined
@@ -17,20 +18,22 @@ export default function ProductCard(props: Iprops) {
     const { addCartItem } = useCustomContext() as any
     return (
         <Card sx={{ maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardMedia
-                component="img"
-                height="140"
-                image={props.data?.image}
-                alt="green iguana"
-            />
-            <CardContent >
-                <Typography color='#1976d2' gutterBottom variant="subtitle2" component="div">
-                    {props.data?.price}
-                </Typography>
-                <Typography fontWeight={500} variant="subtitle1" color="text.secondary">
-                    {props.data?.name}
-                </Typography>
-            </CardContent>
+            <Link to={`/productDetail/${props.data?.id}`}>
+                <CardMedia
+                    component="img"
+                    height="140"
+                    image={props.data?.image}
+                />
+                <CardContent >
+                    <Typography color='#1976d2' gutterBottom variant="subtitle2" component="div">
+                        {props.data?.price}
+                    </Typography>
+                    <Typography fontWeight={500} variant="subtitle1" color="text.secondary">
+                        {props.data?.name}
+                    </Typography>
+                </CardContent>
+            </Link>
+
             <CardActions sx={{ marginTop: 'auto' }}>
                 <Button onClick={() => addCartItem(props.data)} sx={{ width: '100%' }} variant='contained' color="primary" disableElevation>
                     Sepete Ekle

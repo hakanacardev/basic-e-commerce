@@ -1,5 +1,5 @@
 import Search from '@mui/icons-material/Search';
-import * as React from 'react';
+import React, { useState } from 'react';
 import "../App.css"
 interface Iprops {
     icon?: JSX.Element
@@ -7,6 +7,6 @@ interface Iprops {
 export default function Input(props: Iprops) {
     return <label className='inputLabel'>
         {props.icon}
-        <input className='inputStyle' type="search"></input>
+        <input  className='inputStyle' type="search"></input>
     </label>
 }
